@@ -2,7 +2,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 import ListaTemas from "./components/temas/listaTemas/ListaTemas";
 import FormularioTema from "./components/temas/formularioTema/FormularioTema";
-import DeletarTema from './components/temas/deletarTema/DeletarTema';
+import DeletarTema from "./components/temas/deletarTema/DeletarTema";
+import ListaPostagens from "./components/postagens/listaPostagens/ListaPostagens";
+import FormularioPostagem from './components/postagens/formularioPostagem/FormularioPostagem';
+import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPostagem';
 
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
@@ -27,6 +30,13 @@ function App() {
             <Route path="/cadastrarTema" element={<FormularioTema />} />
             <Route path="/editarTema/:id" element={<FormularioTema />} />
             <Route path="/deletarTema/:id" element={<DeletarTema />} />
+            <Route path="/postagens" element={<ListaPostagens />} />
+            <Route path="/cadastroPostagem" element={<FormularioPostagem />} />
+            <Route path="/deletarPostagem/:id" element={<DeletarPostagem />} />
+            <Route
+              path="/editarPostagem/:id"
+              element={<FormularioPostagem />}
+            />
           </Routes>
         </div>
         <Footer />
