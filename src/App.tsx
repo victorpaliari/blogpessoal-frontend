@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
+import { ToastContainer } from 'react-toastify';
 import ListaTemas from "./components/temas/listaTemas/ListaTemas";
 import FormularioTema from "./components/temas/formularioTema/FormularioTema";
 import DeletarTema from "./components/temas/deletarTema/DeletarTema";
@@ -13,10 +14,13 @@ import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
 import Cadastro from "./pages/cadastro/Cadastro";
 import Body from "./components/body/Body";
+import Perfil from './pages/perfil/Perfil';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <AuthProvider>
+       <ToastContainer />
       <BrowserRouter>
         <Navbar />
         <Body />
@@ -33,6 +37,7 @@ function App() {
             <Route path="/postagens" element={<ListaPostagens />} />
             <Route path="/cadastroPostagem" element={<FormularioPostagem />} />
             <Route path="/deletarPostagem/:id" element={<DeletarPostagem />} />
+            <Route path="/perfil" element={<Perfil />} />
             <Route
               path="/editarPostagem/:id"
               element={<FormularioPostagem />}

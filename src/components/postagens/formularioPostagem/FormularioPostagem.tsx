@@ -1,12 +1,11 @@
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
-
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
 import { AuthContext } from '../../../contexts/AuthContext';
-
 import Tema from '../../../models/Tema';
 import Postagem from '../../../models/Postagem';
+import { toastAlerta } from '../../../utils/toastAlerta';
 
 function FormularioPostagem() {
 
@@ -47,13 +46,15 @@ function FormularioPostagem() {
         })
     }
 
+    //verifica se o token está vazio e caso sim, não permite a interação, enviando o usuário para a página de login
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado');
+            toastAlerta('Você precisa estar logado', "erro")
             navigate('/');
         }
     }, [token])
 
+    //caso o id de temas seja indefinido, significa que aquele tema está endo atualizado
     useEffect(() => {
         buscarTemas()
 
@@ -61,6 +62,15 @@ function FormularioPostagem() {
             buscarPostagemPorId(id)
         }
     }, [id])
+
+    //se está sendo atualizada, ele pega as informações que são necessárias de preencher e muda seu estado final
+    // [...postagem == 
+    // id: 1;
+    // titulo: 
+    //texto: 
+    // data: 
+    //tema: 
+    //usuário: ]
 
     useEffect(() => {
         setPostagem({
@@ -82,6 +92,7 @@ function FormularioPostagem() {
         navigate('/postagens');
     }
 
+    //
     async function gerarNovaPostagem(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
         setIsLoading(true)
@@ -94,14 +105,14 @@ function FormularioPostagem() {
                     },
                 });
 
-                alert('Postagem atualizada com sucesso')
+                toastAlerta('Postagem atualizada com sucesso', "sucesso")
 
             } catch (error: any) {
                 if (error.toString().includes('403')) {
-                    alert('O token expirou, favor logar novamente')
+                    toastAlerta('O token expirou, favor logar novamente', "erro")
                     handleLogout()
                 } else {
-                    alert('Erro ao atualizar a Postagem')
+                    toastAlerta('Erro ao atualizar Postagem', "erro")
                 }
             }
 
@@ -113,14 +124,14 @@ function FormularioPostagem() {
                     },
                 })
 
-                alert('Postagem cadastrada com sucesso');
+                toastAlerta('Postagem cadastrada com sucesso', "sucesso");
 
             } catch (error: any) {
                 if (error.toString().includes('403')) {
-                    alert('O token expirou, favor logar novamente')
+                    toastAlerta('O token expirou, favor logar novamente', "erro")
                     handleLogout()
                 } else {
-                    alert('Erro ao cadastrar a Postagem');
+                    toastAlerta('Erro ao cadastrar a Postagem', "erro");
                 }
             }
         }
