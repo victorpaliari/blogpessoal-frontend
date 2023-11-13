@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { ReactNode, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   SignOut,
@@ -9,7 +9,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 function Navbar() {
   const navigate = useNavigate();
-  const { handleLogout } = useContext(AuthContext);
+  const { usuario, handleLogout } = useContext(AuthContext);
 
   function logout() {
     handleLogout();
@@ -17,10 +17,14 @@ function Navbar() {
     navigate("/login");
   }
 
-  return (
-    <>
+  let component: ReactNode
+
+  if (usuario.token !== "") {
+
+    
+  component = (
       <div
-        className="w-full bg-indigo-900 text-white flex justify-center py-4">
+        className="w-full bg-[#1b0707] text-white flex justify-center py-4">
         <div className="container flex justify-between ml-20">
 
           <Link to="/home">
@@ -36,14 +40,17 @@ function Navbar() {
               <User size={30} />
             </Link>
 
-            <Link to="" onClick={logout} title="Sair" className="hover:opacity-70 ml-3">
-              <SignOut size={30} />
-            </Link>  
+            <Link to="" onClick={logout} title="Sair" className="hover:opacity-70 ml-3"><SignOut size={30} /></Link>  
             </div>
           </div>
         </div>
-    </>
-  );
-}
+        )
+        }
+return (
+  <>
+    {component}
+  </>
+)
+  }
 
-export default Navbar;
+export default Navbar

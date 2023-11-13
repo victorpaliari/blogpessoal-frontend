@@ -1,9 +1,11 @@
-
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
+    
     <>
-      <div className="bg-indigo-900 text-white">
+    <div className="grid grid-cols-2">
+      <div className="bg-[#1b0707] text-white">
         <div className="container grid grid-cols-2 text-white">
           <div className="flex flex-col gap-4 items-center justify-center py-4">
             <h2 className="text-5xl font-bold">Seja Bem Vinde!</h2>
@@ -18,12 +20,13 @@ function Home() {
 
           <div className="flex justify-center relative">
             <img
-              src="https://i.imgur.com/fyfri1v.png"
+              src=""
               alt="Imagem Página Home"
               className="w-2/3"
             />
           </div>
         </div>
+      </div>
       </div>
     </>
   );
