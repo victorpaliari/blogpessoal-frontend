@@ -5,6 +5,7 @@ import {
   AppWindow,
   Chats,
   User,
+  At,
   NotePencil,
 } from "@phosphor-icons/react";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -27,7 +28,7 @@ function Navbar() {
       >
         <div className="container flex justify-between text-lg">
           <Link to="/home" className="text-2xl font-bold">
-            Blog Pessoal
+            talkier
           </Link>
 
           <div className="flex gap-4">
@@ -57,6 +58,8 @@ function Navbar() {
             >
               <SignOut size={27} />
             </Link>
+
+            <Link to="/sobremim" title="Sobre Mim" className="hover:opacity-70"><At size={27} /></Link>
           </div>
         </div>
       </div>

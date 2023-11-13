@@ -10,6 +10,7 @@ import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
 import Cadastro from "./pages/cadastro/Cadastro";
 import Body from "./components/body/Body";
+import SobreMim from "./pages/sobremim/SobreMim";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/cadastrarTema" element={<FormularioTema />} />
             <Route path="/editarTema/:id" element={<FormularioTema />} />
             <Route path="/deletarTema/:id" element={<DeletarTema />} />
+            <Route path="/sobremim" element={<SobreMim />}/>
           </Routes>
         </div>
         <Footer />
