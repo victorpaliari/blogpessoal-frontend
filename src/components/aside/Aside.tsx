@@ -12,6 +12,7 @@ import {
 function Aside() {
 
   return (
+    <div className="grid-cols-2">
     <div className="w-full bg-indigo-900 text-white flex flex-col p-4">
       <div className="flex flex-col gap-4 mt-4 ml-20">
         <div className="align-center">
@@ -34,7 +35,7 @@ function Aside() {
         <Link to="/sobremim" title="About talkier" className="hover:opacity-70">
           <At size={40} />
         </Link>
-        
+        </div>
       </div>
     </div>
   );
