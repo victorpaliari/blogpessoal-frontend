@@ -16,6 +16,7 @@ function Footer() {
         component = (
             <div className="flex justify-center bg-indigo-900 text-white">
                 <div className="container flex flex-col items-center py-4">
+<<<<<<< HEAD
                     <p className='text-xl font-bold'>
                         Blog Pessoal Generation | Copyright: { data }
                     </p>
@@ -33,6 +34,13 @@ function Footer() {
     return (
         <>
             { component }
+=======
+                    <p className='text-xl font-bold opacity-50'>
+                            talkier | copyright: {data}
+                        </p>
+                    </div>
+            </div>
+>>>>>>> c413eb16647c8287f99a1a8e93e7476c953f9ffd
         </>
     )
 }

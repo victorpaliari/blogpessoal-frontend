@@ -14,8 +14,12 @@ import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
 import Cadastro from "./pages/cadastro/Cadastro";
 import Body from "./components/body/Body";
+<<<<<<< HEAD
 import Perfil from './pages/perfil/Perfil';
 import 'react-toastify/dist/ReactToastify.css';
+=======
+import SobreMim from "./pages/sobremim/SobreMim";
+>>>>>>> c413eb16647c8287f99a1a8e93e7476c953f9ffd
 
 function App() {
   return (
@@ -34,6 +38,7 @@ function App() {
             <Route path="/cadastrarTema" element={<FormularioTema />} />
             <Route path="/editarTema/:id" element={<FormularioTema />} />
             <Route path="/deletarTema/:id" element={<DeletarTema />} />
+<<<<<<< HEAD
             <Route path="/postagens" element={<ListaPostagens />} />
             <Route path="/cadastroPostagem" element={<FormularioPostagem />} />
             <Route path="/deletarPostagem/:id" element={<DeletarPostagem />} />
@@ -42,6 +47,9 @@ function App() {
               path="/editarPostagem/:id"
               element={<FormularioPostagem />}
             />
+=======
+            <Route path="/sobremim" element={<SobreMim />}/>
+>>>>>>> c413eb16647c8287f99a1a8e93e7476c953f9ffd
           </Routes>
         </div>
         <Footer />
