@@ -26,26 +26,12 @@ function Navbar() {
         className="w-full bg-indigo-900 text-white
                 flex justify-center py-4"
       >
-        <div className="container flex justify-between text-lg">
-          <Link to="/home" className="text-2xl font-bold">
-            talkier
+        <div className="container flex justify-around">
+          <Link to="/home">
+            <img src="https://i.imgur.com/Nf4llmC.png" alt="talkier"
+            style={{ width: '70px', height: 'auto' }}
+             />
           </Link>
-
-          <div className="flex gap-4">
-            <Link to="./cadastrarTema" title="Cadastrar Tema" className="hover:opacity-70">
-              <NotePencil size={27} />
-            </Link>
-            <Link to="./temas" title="Ver Temas" className="hover:opacity-70">
-              <AppWindow size={27} />
-            </Link>
-
-            <Link
-              to="./Postagens"
-              title="Ver Postagens"
-              className="hover:opacity-70"
-            >
-              <Chats size={27} />
-            </Link>
 
             <Link to="./Perfil" title="Perfil" className="hover:opacity-70">
               <User size={27} />
@@ -62,7 +48,6 @@ function Navbar() {
             <Link to="/sobremim" title="Sobre Mim" className="hover:opacity-70"><At size={27} /></Link>
           </div>
         </div>
-      </div>
     </>
   );
 }

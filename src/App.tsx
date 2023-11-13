@@ -8,6 +8,7 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
+import Aside from "./components/aside/Aside";
 import Cadastro from "./pages/cadastro/Cadastro";
 import Body from "./components/body/Body";
 import SobreMim from "./pages/sobremim/SobreMim";
@@ -17,6 +18,7 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Navbar />
+        <Aside />
         <Body />
         <div className="min-h-[80vh]">
           <Routes>
