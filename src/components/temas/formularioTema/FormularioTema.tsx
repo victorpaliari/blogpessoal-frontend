@@ -21,7 +21,7 @@ function FormularioTema() {
 
     async function buscarPorId(id: string) {
         try {
-            await buscar(`/temas/${id}`, setTema, {
+            await buscar('/temas/${id}', setTema, {
                 headers: {
                     'Authorization': token
                 }

@@ -25,8 +25,7 @@ function Navbar() {
   component = (
       <div
         className="w-full bg-[#1b0707] text-white flex justify-center py-4">
-        <div className="container flex justify-between ml-20">
-
+        <div className="container flex justify-between">
           <Link to="/home">
             <img src="https://i.imgur.com/Nf4llmC.png" alt="talkier" style={{ width: '70px', height: 'auto' }}/>
           </Link>
