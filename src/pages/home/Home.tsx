@@ -9,8 +9,7 @@ import {
   Cards,
   User,
   At,
-  NotePencil,
-  PlusSquare,
+  NotePencil
 } from "@phosphor-icons/react";
 
 function Home() {
@@ -24,15 +23,12 @@ function Home() {
         <div className="bg-[#1b0707] text-white flex flex-col p-4  border-white border-solid border-2">
           <div className="flex flex-col gap-4 mt-4 ml-20">
             <div className="align-center">
-              <Link to="/cadastrarTema" title="Cadastrar Tema" className="hover:opacity-70">
+              <Link to="/cadastroTemas" title="Cadastrar Tema" className="hover:opacity-70">
                 <NotePencil size={40} />
               </Link>
             </div>
             <Link to="/temas" title="Ver Temas" className="hover:opacity-70">
               <AppWindow size={40} />
-            </Link>
-            <Link to="/cadastroTemas" title="Novo Tema" className="hover:opacity-70">
-              <PlusSquare size={40} />
             </Link>
             <Link to="/perfil" title="Perfil" className="hover:opacity-70">
               <User size={40} />
@@ -43,7 +39,6 @@ function Home() {
             <Link to='/postagens' className='hover:underline'><Cards size={40} /></Link>
           </div>
         </div>
-
         <div className="col-span-6 bg-[#1b0707] text-white border-white border-solid border-2">
         <div className="flex justify-around gap-4">
               </div>
