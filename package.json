@@ -11,13 +11,7 @@
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.0.13",
-<<<<<<< HEAD
     "axios": "^1.3.4",
-=======
-    "axios": "1.3.4",
-    "flowbite": "^2.0.0",
-    "flowbite-react": "^0.6.4",
->>>>>>> 617043723cea1edf8882d48fab949b7784592b58
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-loader-spinner": "5.3.4",
