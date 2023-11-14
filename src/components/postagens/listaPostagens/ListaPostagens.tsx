@@ -7,6 +7,10 @@ import { AuthContext } from '../../../contexts/AuthContext';
 
 import Postagem from '../../../models/Postagem';
 import CardPostagens from '../cardPostagens/CardPostagens';
+<<<<<<< HEAD
+=======
+import { toastAlerta } from '../../../utils/toastAlerta';
+>>>>>>> 617043723cea1edf8882d48fab949b7784592b58
 
 function ListaPostagens() {
 
@@ -18,7 +22,10 @@ function ListaPostagens() {
     const token = usuario.token;
 
     async function buscarPostagens() {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 617043723cea1edf8882d48fab949b7784592b58
         try {
             await buscar('/postagens', setPostagens, {
                 headers: {
@@ -28,7 +35,11 @@ function ListaPostagens() {
 
         } catch (error: any) {
             if (error.toString().includes('403')) {
+<<<<<<< HEAD
                 alert('O token expirou, favor logar novamente')
+=======
+                toastAlerta('O token expirou, favor logar novamente', "erro")
+>>>>>>> 617043723cea1edf8882d48fab949b7784592b58
                 handleLogout()
             }
         }
@@ -36,7 +47,11 @@ function ListaPostagens() {
 
     useEffect(() => {
         if (token === '') {
+<<<<<<< HEAD
             alert('Você precisa estar logado')
+=======
+            toastAlerta('Você precisa estar logado', "erro")
+>>>>>>> 617043723cea1edf8882d48fab949b7784592b58
             navigate('/');
         }
     }, [token])
@@ -59,7 +74,11 @@ function ListaPostagens() {
         )}
 
         <div className='container mx-auto my-4 
+<<<<<<< HEAD
         grid grid-cols-1 gap-4'>
+=======
+        grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+>>>>>>> 617043723cea1edf8882d48fab949b7784592b58
 
             {postagens.map((postagem) => (
                 <CardPostagens key={postagem.id} post={postagem} />
