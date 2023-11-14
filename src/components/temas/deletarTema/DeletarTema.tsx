@@ -29,11 +29,7 @@ function DeletarTema() {
             })
         } catch (error: any) {
             if (error.toString().includes('403')) {
-<<<<<<< HEAD
                 toastAlerta('Token expirado. Por favor, faça login novamente!', "info")
-=======
-                toastAlerta('O token expirou, favor logar novamente', "erro")
->>>>>>> 617043723cea1edf8882d48fab949b7784592b58
                 handleLogout()
             }
         }
@@ -41,11 +37,7 @@ function DeletarTema() {
 
     useEffect(() => {
         if (token === '') {
-<<<<<<< HEAD
             toastAlerta('Você precisa estar logado para utilizar essa funcionalidade.', "info")
-=======
-            toastAlerta('Você precisa estar logado', "erro")
->>>>>>> 617043723cea1edf8882d48fab949b7784592b58
             navigate('/login')
         }
     }, [token])
@@ -66,17 +58,10 @@ function DeletarTema() {
                 }
             })
 
-<<<<<<< HEAD
             toastAlerta('Tema apagado com sucesso!', "sucesso")
 
         } catch (error) {
             toastAlerta('Erro ao apagar o tema. Tente novamente!', "erro")
-=======
-            toastAlerta('Tema apagado com sucesso', "sucesso")
-
-        } catch (error) {
-            toastAlerta('Erro ao apagar o Tema', "erro")
->>>>>>> 617043723cea1edf8882d48fab949b7784592b58
         }
 
         setIsLoading(false)
