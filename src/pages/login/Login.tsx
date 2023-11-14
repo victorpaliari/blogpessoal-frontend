@@ -36,7 +36,7 @@ function Login() {
 
     return ( 
         <>
-            <div className="h-screen place-items-center font-bold bg-[#D93937]">
+            <div className="h-screen place-items-center font-bold bg-[#1b0707]">
                 <div className="flex justify-center">
                 <div className="flex justify-center bg-[#E4DED8] p-20 m-12 rounded-[15px]">
                 <form className="flex justify-center items-center flex-col w-full gap-6" onSubmit={login}>
