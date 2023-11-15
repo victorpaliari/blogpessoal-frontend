@@ -29,7 +29,7 @@ function DeletarTema() {
             })
         } catch (error: any) {
             if (error.toString().includes('403')) {
-                toastAlerta('O token expirou, favor logar novamente', "erro")
+                toastAlerta('Token expirado. Por favor, faça login novamente!', "info")
                 handleLogout()
             }
         }
@@ -37,7 +37,7 @@ function DeletarTema() {
 
     useEffect(() => {
         if (token === '') {
-            toastAlerta('Você precisa estar logado', "erro")
+            toastAlerta('Você precisa estar logado para utilizar essa funcionalidade.', "info")
             navigate('/login')
         }
     }, [token])
@@ -58,10 +58,10 @@ function DeletarTema() {
                 }
             })
 
-            toastAlerta('Tema apagado com sucesso', "sucesso")
+            toastAlerta('Tema apagado com sucesso!', "sucesso")
 
         } catch (error) {
-            toastAlerta('Erro ao apagar o Tema', "erro")
+            toastAlerta('Erro ao apagar o tema. Tente novamente!', "erro")
         }
 
         setIsLoading(false)
@@ -74,7 +74,7 @@ function DeletarTema() {
 
     return (
         <div className='container w-1/3 mx-auto'>
-            <h1 className='text-4xl text-center my-4'>Deletar Tema</h1>
+            <h1 className='text-4xl text-center my-4'>Deletar tema</h1>
 
             <p className='text-center font-semibold mb-4'>
                 Você tem certeza de que deseja apagar o tema a seguir?

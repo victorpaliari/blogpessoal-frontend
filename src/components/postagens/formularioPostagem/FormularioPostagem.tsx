@@ -1,11 +1,12 @@
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
+
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
 import { AuthContext } from '../../../contexts/AuthContext';
+
 import Tema from '../../../models/Tema';
 import Postagem from '../../../models/Postagem';
-import { toastAlerta } from '../../../utils/toastAlerta';
 
 function FormularioPostagem() {
 
@@ -46,15 +47,13 @@ function FormularioPostagem() {
         })
     }
 
-    //verifica se o token está vazio e caso sim, não permite a interação, enviando o usuário para a página de login
     useEffect(() => {
         if (token === '') {
-            toastAlerta('Você precisa estar logado', "erro")
+            alert('Você precisa estar logado');
             navigate('/');
         }
     }, [token])
 
-    //caso o id de temas seja indefinido, significa que aquele tema está endo atualizado
     useEffect(() => {
         buscarTemas()
 
@@ -62,15 +61,6 @@ function FormularioPostagem() {
             buscarPostagemPorId(id)
         }
     }, [id])
-
-    //se está sendo atualizada, ele pega as informações que são necessárias de preencher e muda seu estado final
-    // [...postagem == 
-    // id: 1;
-    // titulo: 
-    //texto: 
-    // data: 
-    //tema: 
-    //usuário: ]
 
     useEffect(() => {
         setPostagem({
@@ -89,10 +79,9 @@ function FormularioPostagem() {
     }
 
     function retornar() {
-        navigate('/postagens');
+        navigate('/home');
     }
 
-    //
     async function gerarNovaPostagem(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
         setIsLoading(true)
@@ -105,14 +94,14 @@ function FormularioPostagem() {
                     },
                 });
 
-                toastAlerta('Postagem atualizada com sucesso', "sucesso")
+                alert('Postagem atualizada com sucesso')
 
             } catch (error: any) {
                 if (error.toString().includes('403')) {
-                    toastAlerta('O token expirou, favor logar novamente', "erro")
+                    alert('O token expirou, favor logar novamente')
                     handleLogout()
                 } else {
-                    toastAlerta('Erro ao atualizar Postagem', "erro")
+                    alert('Erro ao atualizar a Postagem')
                 }
             }
 
@@ -124,14 +113,14 @@ function FormularioPostagem() {
                     },
                 })
 
-                toastAlerta('Postagem cadastrada com sucesso', "sucesso");
+                alert('Postagem cadastrada com sucesso');
 
             } catch (error: any) {
                 if (error.toString().includes('403')) {
-                    toastAlerta('O token expirou, favor logar novamente', "erro")
+                    alert('O token expirou, favor logar novamente')
                     handleLogout()
                 } else {
-                    toastAlerta('Erro ao cadastrar a Postagem', "erro");
+                    alert('Erro ao cadastrar a Postagem');
                 }
             }
         }
@@ -142,71 +131,73 @@ function FormularioPostagem() {
 
     const carregandoTema = tema.descricao === '';
 
-    return (<div className="container flex flex-col mx-auto items-center">
-    <h1 className="text-4xl text-center my-8">
-        {id !== undefined ? 'Editar Postagem' : 'Cadastrar Postagem'}
-    </h1>
+    return (
 
-    <form className="flex flex-col w-1/2 gap-4" onSubmit={gerarNovaPostagem}>
-        <div className="flex flex-col gap-2">
-            <label htmlFor="titulo">Título da Postagem</label>
-            <input
-                value={postagem.titulo}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-                type="text"
-                placeholder="Insira aqui o Título"
-                name="titulo"
-                required
-                className="border-2 border-slate-700 rounded p-2"
-            />
+        <div className="container flex flex-col mx-auto items-center">
+            <h1 className="text-4xl text-center my-8">
+                {id !== undefined ? 'Editar Postagem' : 'Cadastrar Postagem'}
+            </h1>
+
+            <form className="flex flex-col w-1/2 gap-4" onSubmit={gerarNovaPostagem}>
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="titulo">Título da Postagem</label>
+                    <input
+                        value={postagem.titulo}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        type="text"
+                        placeholder="Insira aqui o Título"
+                        name="titulo"
+                        required
+                        className="border-2 border-slate-700 rounded p-2"
+                    />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="titulo">Texto da Postagem</label>
+
+                    <input
+                        value={postagem.texto}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        type="text"
+                        placeholder="Adicione aqui o Texto da Postagem"
+                        name="texto"
+                        required
+                        className="border-2 border-slate-700 rounded p-2"
+                    />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                    <p>Tema da Postagem</p>
+                    <select name="tema" id="tema" className='border p-2 border-slate-800 rounded'
+                        onChange={(e) => buscarTemaPorId(e.currentTarget.value)}
+                    >
+                        <option value="" selected disabled>Selecione um Tema</option>
+                        {temas.map((tema) => (
+                            <>
+                                <option value={tema.id} >{tema.descricao}</option>
+                            </>
+                        ))}
+                    </select>
+                </div>
+                <button
+                    type='submit'
+                    disabled={carregandoTema}
+                    className='flex justify-center rounded disabled:bg-slate-200 bg-indigo-400 
+                            hover:bg-indigo-800 text-white font-bold w-1/2 mx-auto py-2'
+                >
+                    {isLoading ?
+                        <RotatingLines
+                            strokeColor="white"
+                            strokeWidth="5"
+                            animationDuration="0.75"
+                            width="24"
+                            visible={true}
+                        /> :
+                        <span>Confirmar</span>
+                    }
+                </button>
+            </form>
         </div>
-
-        <div className="flex flex-col gap-2">
-            <label htmlFor="titulo">Texto da Postagem</label>
-
-            <input
-                value={postagem.texto}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-                type="text"
-                placeholder="Adicione aqui o Texto da Postagem"
-                name="texto"
-                required
-                className="border-2 border-slate-700 rounded p-2"
-            />
-        </div>
-
-        <div className="flex flex-col gap-2">
-            <p>Tema da Postagem</p>
-            <select name="tema" id="tema" className='border p-2 border-slate-800 rounded'
-                onChange={(e) => buscarTemaPorId(e.currentTarget.value)}
-            >
-                <option value="" selected disabled>Selecione um Tema</option>
-                {temas.map((tema) => (
-                    <>
-                        <option value={tema.id} >{tema.descricao}</option>
-                    </>
-                ))}
-            </select>
-        </div>
-        <button
-            type='submit'
-            disabled={carregandoTema}
-            className='flex justify-center rounded disabled:bg-slate-200 bg-indigo-400 
-                    hover:bg-indigo-800 text-white font-bold w-1/2 mx-auto py-2'
-        >
-            {isLoading ?
-                <RotatingLines
-                    strokeColor="white"
-                    strokeWidth="5"
-                    animationDuration="0.75"
-                    width="24"
-                    visible={true}
-                /> :
-                <span>Confirmar</span>
-            }
-        </button>
-    </form>
-</div>
-);
-        }
-        export default FormularioPostagem;
+)
+                }
+                export default FormularioPostagem;
